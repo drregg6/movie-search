@@ -1,16 +1,17 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const Movies = (props) => {
+const Movies = ({ movies }) => {
+  
   return (
     <div>
-      <h1>Movies!</h1>
+      { movies.map(movie => <p>{ movie.Title }</p>) }
     </div>
   )
 }
 
-// Movies.propTypes = {
-
-// }
+Movies.propTypes = {
+  movies: PropTypes.array
+}
 
 export default Movies;

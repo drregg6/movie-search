@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 
-const Search = (props) => {
+const Search = ({
+  handleSubmit
+}) => {
   const [ input, setInput ] = useState({
     term: ""
   });
@@ -14,16 +16,16 @@ const Search = (props) => {
     });
   }
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  // const handleSubmit = event => {
+  //   event.preventDefault();
 
-    console.log(input);
-    setInput({ ...input, term: "" });
-  }
+  //   console.log(input);
+  //   setInput({ ...input, term: "" });
+  // }
 
   return (
     <>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onSubmit={event => handleSubmit(event, input)}>
         <input
           type="text"
           placeholder="Search for a movie"

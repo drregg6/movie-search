@@ -15,7 +15,7 @@ https://www.freecodecamp.org/news/how-to-build-a-movie-search-app-using-react-ho
 
 */
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
 
@@ -26,16 +26,14 @@ import Movies from './components/Movies';
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [term, setTerm] = useState('');
 
-  const setChange = event => {
-    setTerm(event.target.value);
-  }
   const handleSubmit = async (event, term) => {
     event.preventDefault();
+    const searchTerm = term.term;
 
     try {
-      let res = await axios.get(`http://www.omdbapi.com/?apikey=63f2c511&s=${term}`);
+      let res = await axios.get(`http://www.omdbapi.com/?apikey=63f2c511&s=${searchTerm}`);
+      console.log(res.data);
       return setMovies([...res.data.Search]);
     } catch (error) {
       console.error(error);
@@ -43,12 +41,8 @@ function App() {
   }
   return (
     <div className="App">
-      <form onSubmit={(event) => handleSubmit(event, term)}>
-        <input type="text" placeholder="test" onChange={(event) => setChange(event)} />
-        <input type="submit" value="Testing" />
-      </form>
       <Header />
-      <Search />
+      <Search handleSubmit={handleSubmit} />
       <Movies movies={movies} />
     </div>
   );

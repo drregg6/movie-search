@@ -1,3 +1,10 @@
 .App {
   text-align: center;
 }
+
+.movies {
+  min-width: 960px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

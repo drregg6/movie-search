@@ -1,5 +1,7 @@
 /*
 
+https://daveceddia.com/react-practice-projects/
+
 http://www.omdbapi.com/
 ---
 API_KEY=63f2c511
